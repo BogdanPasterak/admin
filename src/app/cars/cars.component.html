@@ -1,0 +1,8 @@
+<h3>
+  Lista Aut
+</h3>
+<ul>
+  <li *ngFor="let car of cars" routerLink="/car/{{car.id}}" >
+    {{car.owner}}&nbsp;&nbsp;&nbsp;{{car.plate}}&nbsp;&nbsp;&nbsp;{{car.id}}
+  </li>
+</ul>
