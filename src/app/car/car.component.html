@@ -1,4 +1,36 @@
-<p>
-  car works! <strong *ngIf="car">{{car.plate}}</strong>
-</p>
+<h2>
+  Edit Car
+</h2>
+
+<form *ngIf="car" (ngSubmit)="onSubmit()" #carForm="ngForm" > 
+    <!-- routerLink="/update/{{id}}" -->
+  <fieldset class="fild">
+    <legend>Type / Update  details (car id: {{id}} )</legend>
+      <br>
+      <label for="owner">Owner: </label>
+      <input type="text" name="owner" value="{{car.owner}}" required
+          [(ngModel)]="car.owner" #name="ngModel"/>
+      <br><br>
+      <label for="make">Make : </label>
+      <input type="text" name="make" value="{{car.make}}" required />
+      <br><br>
+      <label for="model">Model: </label>
+      <input type="text" name="model" value="{{car.model}}" />
+      <br><br>
+      <label for="color">Color: </label>
+      <input type="text" name="color" value="{{car.color}}" />
+      <br><br>
+      <label for="plate">Plate: </label>
+      <input type="text" name="plate" value="{{car.plate}}" required />
+      <br><br>
+      <label for="image">Image: </label>
+      <input type="text" name="image" value="{{car.image}}" />
+      <br><br><br>
+      <button type="submit" >Update</button>
+      &nbsp;
+      <button type="button" (click)="carForm.reset()" >Reset</button>
+      <br><br>
+  </fieldset>
+</form>
+<p *ngIf="submitted">Wyslane</p>
 <button (click)="goBack()">go back</button>

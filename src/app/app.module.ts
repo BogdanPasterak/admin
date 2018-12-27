@@ -13,6 +13,7 @@ import { CarsComponent } from './cars/cars.component';
 import { CarComponent } from './car/car.component';
 import { LoginComponent } from './login/login.component';
 import { AddComponent } from './add/add.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddComponent } from './add/add.component';
     AngularFireModule.initializeApp(environment.firebase, 'admin'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,16 @@ import { Car } from '../car';
 export class CarComponent implements OnInit {
 
   car: Car;
+  //car = new Car();
+
+  id: string;
+  submitted = false;
+
+  onSubmit() { this.submitted = true; }
+
+    // TODO: Remove this when we're done
+    get diagnostic() { return JSON.stringify(this.car); }
+
 
   constructor(
     private route: ActivatedRoute,
@@ -21,12 +31,16 @@ export class CarComponent implements OnInit {
 
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.dataService.getCar(id)
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.dataService.getCar(this.id)
       .subscribe(car => this.car = car);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  Update(): void {
+    console.log("Nadpisuje !");
   }
 }
