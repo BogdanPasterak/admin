@@ -3,6 +3,11 @@
 </h3>
 <ul>
   <li *ngFor="let car of cars" routerLink="/car/{{car.id}}" >
-    {{car.owner}}&nbsp;&nbsp;&nbsp;{{car.plate}}&nbsp;&nbsp;&nbsp;{{car.id}}
+    {{car.owner}}&nbsp;&nbsp;&nbsp;
+    {{car.plate}}<br/>
+    <img [src]="car.image" width="150px" height="100px" alt="No image">
+  </li>
+  <li routerLink="/car/new" >
+    <h3 style="padding: 10px;"> Add new car </h3>
   </li>
 </ul>

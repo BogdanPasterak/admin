@@ -37,6 +37,16 @@ export class DataService {
     this.carCollection.doc(id).set(car);
   }
 
+  updateCar(id: string, car: Car): void {
+    this.carCollection.doc(id).set(car);
+  }
 
+  deleteCar(id: string): void {
+    this.carCollection.doc(id).delete();
+  }
+
+  getNewId(): string {
+    return this.db.createId();
+  }
 
 }

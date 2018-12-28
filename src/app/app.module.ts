@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarComponent } from './car/car.component';
 import { LoginComponent } from './login/login.component';
-import { AddComponent } from './add/add.component';
 import { FormsModule }   from '@angular/forms';
 
 @NgModule({
@@ -20,8 +19,7 @@ import { FormsModule }   from '@angular/forms';
     AppComponent,
     CarsComponent,
     CarComponent,
-    LoginComponent,
-    AddComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
