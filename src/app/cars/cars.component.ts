@@ -17,10 +17,13 @@ export class CarsComponent implements OnInit {
   constructor(private dataService: DataService) {  }
 
   ngOnInit() {
+    var self = this;
     if ( this.user = this.dataService.isLog() ) {
-      
-      this.dataService.getCars()
-        .subscribe(cars => this.cars = cars);
+      this.user.subscribe(res => {
+        if (res != null)
+          self.dataService.getCars()
+          .subscribe(cars => this.cars = cars);
+      });
     } else {
       console.log('zaloguj');
     }
