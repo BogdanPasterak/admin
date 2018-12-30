@@ -7,7 +7,7 @@
     {{car.plate}}<br/>
     <img [src]="car.image" width="150px" height="100px" alt="No image">
   </li>
-  <li routerLink="/car/new" >
+  <li routerLink="/car/new" *ngIf="(user | async)" >
     <h4 style="padding: 10px;"> Add new car </h4>
   </li>
 </ul>
