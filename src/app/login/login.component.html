@@ -1,10 +1,10 @@
 <h2>
   Login
 </h2>
-<form *ngIf="!user" (ngSubmit)="onSubmit()"> 
+<h3 *ngIf="(user | async)">Welcom <strong>{{(user | async)?.email}}</strong></h3>
+<form *ngIf="!(user | async)" (ngSubmit)="onSubmit()"> 
   <!-- routerLink="/update/{{id}}" -->
 <fieldset class="fild">
-  <legend>Type</legend>
     <br>
     <label for="email">E-mail: </label>
     <input type="text" name="email" [(ngModel)]="email" required />
@@ -17,3 +17,6 @@
     &nbsp;
 </fieldset>
 </form>
+<div>
+  <button (click)="logout()">Log out</button>
+</div>

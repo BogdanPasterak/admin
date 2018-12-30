@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { map, find } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { error } from 'util';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +13,20 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class DataService {
 
   private carCollection: AngularFirestoreCollection<Car>;
+  //public user: User;
 
   constructor(
       private readonly db: AngularFirestore,
       private afAuth: AngularFireAuth
-      ) { 
+      ) {
+
     this.carCollection = db.collection<Car>('cars');
  }
 
+
+
   getCars(): Observable<CarId[]> {
-    console.log("Zwracam kolekcje"); 
+    //console.log("Zwracam kolekcje"); 
     return ( this.carCollection.auditTrail().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Car;
@@ -28,6 +34,16 @@ export class DataService {
         return { id, ...data };
       }))
     ));
+  }
+
+
+  isLog(): Observable<User> {
+    //console.log("czy zalaogowany?");
+    return this.afAuth.authState;
+  }
+
+  logOut(): Promise<void> {
+    return this.afAuth.auth.signOut()
   }
 
   getCar(id: string): Observable<Car> {
@@ -52,18 +68,10 @@ export class DataService {
     return this.db.createId();
   }
 
-  credential(email: string, password: string): string {
-    console.log('Credensial!')
-    this.afAuth.auth.signInWithEmailAndPassword(email,password)
-      .then( function(user) {
-        console.log("Authenticated successfully with payload:", user.user);
-        return user;
-      })
-      .catch(function(error){
-        console.log("Login Failed!", error);
-        return '';
-      });
-    return '';
+  cred2(email: string, password: string): Promise<string> {
+    var self = this;
+    return this.afAuth.auth.signInWithEmailAndPassword(email,password)
+      .catch(error => {console.log(error); return null;});
   }
 
 }

@@ -1,5 +1,5 @@
 <h3>
-  Lista Aut
+  Welcome <strong *ngIf="(user | async)">{{(user | async)?.email}}</strong>
 </h3>
 <ul>
   <li *ngFor="let car of cars" routerLink="/car/{{car.id}}" >
@@ -8,6 +8,6 @@
     <img [src]="car.image" width="150px" height="100px" alt="No image">
   </li>
   <li routerLink="/car/new" >
-    <h3 style="padding: 10px;"> Add new car </h3>
+    <h4 style="padding: 10px;"> Add new car </h4>
   </li>
 </ul>
