@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { DataService }  from '../data.service';
 import { Car } from '../car';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-car',
@@ -13,11 +15,12 @@ import { Router } from '@angular/router';
 export class CarComponent implements OnInit {
 
   car: Car;
-  //car = new Car();
-
   id: string;
   submitted = false;
   new = true;
+
+  user: Observable<User>;
+
 
   constructor(
     private router: Router,
@@ -28,15 +31,31 @@ export class CarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id === 'new') {
-      this.id = this.dataService.getNewId();
-      this.car = {color: "", image: "", make: "", model: "", plate: "", owner: ""};
+    var self = this;
+    if ( this.user = this.dataService.isLog() ) {
+      this.user.subscribe(res => {
+        if (res != null) {
+          
+          self.id = self.route.snapshot.paramMap.get('id');
+          if (self.id === 'new') {
+            self.id = self.dataService.getNewId();
+            self.car = {color: "", image: "", make: "", model: "", plate: "", owner: ""};
+          } else {
+            self.new = false;
+            self.dataService.getCar(self.id)
+              .subscribe(car => self.car = car);
+          }
+      
+        } else 
+          self.router.navigate(['/login']);
+      });
     } else {
-      this.new = false;
-      this.dataService.getCar(this.id)
-        .subscribe(car => this.car = car);
+      console.log('Nie ma polaczenia z baza');
     }
+
+
+
+
   }
 
   goBack(): void {

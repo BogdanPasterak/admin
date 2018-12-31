@@ -3,6 +3,7 @@ import { Car, CarId } from '../car';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cars',
@@ -14,7 +15,10 @@ export class CarsComponent implements OnInit {
   cars: CarId[];
   user: Observable<User>;
 
-  constructor(private dataService: DataService) {  }
+  constructor(
+    private dataService: DataService,
+    private router: Router
+    ) {  }
 
   ngOnInit() {
     var self = this;
@@ -23,9 +27,11 @@ export class CarsComponent implements OnInit {
         if (res != null)
           self.dataService.getCars()
           .subscribe(cars => this.cars = cars);
+        else 
+          self.router.navigate(['/login']);
       });
     } else {
-      console.log('zaloguj');
+      console.log('Nie ma polaczenia z baza');
     }
 
   }

@@ -1,11 +1,11 @@
 <h2>
-  Edit Car
+  <span>{{new ? 'Add' : 'Edit'}}</span> Car
 </h2>
-
-<form *ngIf="car" (ngSubmit)="onSubmit()" #carForm="ngForm" > 
+<div *ngIf="(user | async)">
+  <form *ngIf="car" (ngSubmit)="onSubmit()" #carForm="ngForm">
     <!-- routerLink="/update/{{id}}" -->
-  <fieldset class="fild">
-    <legend>Type / Update  details (car id: {{id}} )</legend>
+    <fieldset class="fild">
+      <legend>{{new ? 'Type' : 'Update'}} details (car id: {{id}} )</legend>
       <br>
       <label for="owner">Owner: </label>
       <input type="text" name="owner" [(ngModel)]="car.owner" required />
@@ -25,15 +25,15 @@
       <label for="image">Image: </label>
       <input type="text" name="image" [(ngModel)]="car.image" />
       <br><br><br>
-      
-      <button type="submit" >{{new ? 'Add' : 'Update'}}</button>
+
+      <button type="submit">{{new ? 'Add' : 'Update'}}</button>
       &nbsp;
-      <button type="button" (click)="delete()" *ngIf="!new" >Delete</button>
+      <button type="button" (click)="delete()" *ngIf="!new">Delete</button>
       &nbsp;
-      <button type="button" (click)="reset()" >{{new ? 'Clear' : 'Reset'}}</button>
+      <button type="button" (click)="reset()">{{new ? 'Clear' : 'Reset'}}</button>
       &nbsp;
       <button type="button" (click)="goBack()">Go back</button>
       <br><br>
-  </fieldset>
-</form>
-
+    </fieldset>
+  </form>
+</div>
