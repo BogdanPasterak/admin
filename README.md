@@ -1,5 +1,8 @@
 # Admin
 
+###A small website created for learning.
+###Uses **Angular** and **Firebase** to log in to the database fo edit, add and delete data about cars.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
 ## Development server
