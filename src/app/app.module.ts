@@ -14,8 +14,7 @@ import { CarsComponent } from './cars/cars.component';
 import { CarComponent } from './car/car.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule }   from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatFormFieldModule } from '@angular/material';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -33,10 +32,7 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule } from '@angular/mat
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule,
     FormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

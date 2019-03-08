@@ -30,6 +30,7 @@
     "jquery": "^3.3.1",
     "ngx-bootstrap": "^3.0.1",
     "ngx-popper": "^5.1.7",
+    "peer": "^0.2.10",
     "popper": "^1.0.1",
     "popper.js": "^1.14.6",
     "rxjs": "~6.3.3",
@@ -38,7 +39,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.5",
-    "@angular/cli": "~7.1.4",
+    "@angular/cli": "^7.3.5",
     "@angular/compiler-cli": "^7.2.8",
     "@angular/language-service": "~7.1.0",
     "@types/jasmine": "~2.8.8",
