@@ -28,7 +28,7 @@
 
       <button type="submit">{{new ? 'Add' : 'Update'}}</button>
       &nbsp;
-      <button type="button" (click)="delete()" *ngIf="!new">Delete</button>
+      <button type="button" (click)="openModal(template)" *ngIf="!new">Delete</button>
       &nbsp;
       <button type="button" (click)="reset()">{{new ? 'Clear' : 'Reset'}}</button>
       &nbsp;
@@ -38,12 +38,12 @@
   </form>
 </div>
 
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button>
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
 <br><br>
-<pre class="card card-block card-header">{{message}}</pre>
+<!-- <pre class="card card-block card-header">{{message}}</pre> -->
 <ng-template #template>
   <div class="modal-body text-center">
-    <p>Do you want to confirm?</p>
+    <p>Do you want to delete {{car.owner}}</p>
     <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
     <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
   </div>

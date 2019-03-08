@@ -65,6 +65,10 @@ export class CarComponent implements OnInit {
   confirm(): void {
     this.message = 'Confirmed!';
     this.modalRef.hide();
+    console.log("Delete");
+    this.dataService.deleteCar(this.id);
+    this.router.navigate(['/cars/']);
+
   }
  
   decline(): void {
